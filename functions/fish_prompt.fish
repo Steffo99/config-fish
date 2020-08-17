@@ -16,11 +16,7 @@ function fish_prompt
     set_color normal
     echo -n "@"(prompt_hostname)":"
 
-    if string match "/home/*" "$PWD" >/dev/null
-        set_color brblue
-    else
-        set_color --bold ff7f00
-    end
+    set_color brblue
     echo -n (prompt_pwd)
 
     if test $STATUS -ne 0
@@ -35,7 +31,4 @@ function fish_prompt
         end
     end
     set_color normal
-
-
-
 end
