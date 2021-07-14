@@ -1,5 +1,5 @@
 function winfix
-    sudo umount /dev/sda2
-    sudo ntfsfix -d /dev/sda2
+    sudo umount /dev/sdc2
+    sudo ntfsfix -d /dev/sdc2
     sudo mount -a
 end
