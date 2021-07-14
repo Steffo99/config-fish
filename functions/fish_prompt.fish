@@ -35,7 +35,7 @@ function fish_prompt
 
 
     # Hostname
-    if test -z $SSH_CLIENT
+    if test (who am i | awk '{print $5}') = "(:0)"
         set_color green
     else 
         set_color cyan
