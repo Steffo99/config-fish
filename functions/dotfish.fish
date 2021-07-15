@@ -4,15 +4,16 @@ function dotfish
     else
         set -g TARGET (whoami)
     end
+    set -g FISHCONFIG ~(echo $TARGET)/.config/fish
     
     echo_progress "Updating fish config for: "
     echo_highlight "$TARGET" \n
 
     echo_progress "Pulling from Git..." \n
-    git -C ~(echo $TARGET)/.config/fish pull
+    git -C $FISHCONFIG pull
 
     echo_progress "Fixing permissions..." \n
-    chown -R "$TARGET:" ~(echo $TARGET)
+    chown -R "$TARGET:" $FISHCONFIG
 
     echo_progress "Update complete!"
 end
