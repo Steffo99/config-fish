@@ -6,7 +6,7 @@ function fish_prompt
 
     # User name
     switch ~
-    case "/root/"
+    case "/root"
         # Root
         set_color brred
     case "/srv/*"
