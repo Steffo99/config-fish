@@ -22,7 +22,7 @@ function dotfish
         echo_progress "Conflicting config detected, confirm deletion?" \n
         if confirm
             echo_progress "Deleting old config..." \n 
-            rm -rf $FISHCONFIG
+            rm -rf "$FISHCONFIG"
         else
             echo_progress "Deletion was refused, exiting..." \n
             return 2
@@ -30,16 +30,19 @@ function dotfish
     end
         
 
-    if test -d $FISHCONFIG
+    if test -d "$FISHCONFIG"
         echo_progress "Existing config detected, pulling from Git..." \n
-        git -C $FISHCONFIG pull
+        git -C "$FISHCONFIG" pull
     else
         echo_progress "No config detected, cloning from Git..." \n
-        git clone "https://github.com/Steffo99/.config-fish" $FISHCONFIG
+        git clone "https://github.com/Steffo99/.config-fish" "$FISHCONFIG"
     end
 
     echo_progress "Fixing permissions..." \n
-    chown -R "$TARGET:" $FISHCONFIG
+    chown -R "$TARGET:" "$FISHCONFIG"
+
+    echo_progress "Changing login shell..." \n
+    chsh -s "/usr/bin/fish" "$TARGET"
 
     echo_progress "Update complete!" \n
 end
