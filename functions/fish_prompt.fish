@@ -5,18 +5,19 @@ function fish_prompt
 
 
     # User name
-    if test "$UID" -eq 0
+    switch ~
+    case "/root/"
         # Root
         set_color brred
-    else if test "$UID" -lt 1000
+    case "/srv/*"
         # System account
         set_color brpurple
-    else if test "$UID" -ge 60000
-        # Temporary account
-        set_color brcyan
-    else
+    case "/home/*"
         # Regular user
         set_color brgreen
+    case "*"
+        # Temporary account
+        set_color brcyan
     end
     echo -n "$USER"
 
