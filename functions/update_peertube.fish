@@ -1,6 +1,4 @@
 function update_peertube
-    set -g PWD (pwd)
-
     set -g PEERTUBE_USER "$argv[1]"
     if test -z PEERTUBE_USER
         echo_error "Missing argument 1: PEERTUBE_USER" \n
