@@ -9,8 +9,13 @@ function dotfish
     echo_progress "Updating fish config for: "
     echo_highlight "$TARGET" \n
 
-    echo_progress "Pulling from Git..." \n
-    git -C $FISHCONFIG pull
+    if test -d $FISHCONFIG
+        echo_progress "Pulling from Git..." \n
+        git -C $FISHCONFIG pull
+    else
+        echo_progress "Cloning from Git..." \n
+        git clone "https://github.com/Steffo99/.config-fish" $FISHCONFIG
+    end
 
     echo_progress "Fixing permissions..." \n
     chown -R "$TARGET:" $FISHCONFIG
