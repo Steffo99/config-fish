@@ -31,7 +31,7 @@ function update_peertube
     echo_progress "Creating backup dir..." \n
     mkdir -p "$BACKUP_DIR"
 
-    echo_progress "Dumping the database to the backup dir..."
+    echo_progress "Dumping the database to the backup dir..." \n
     pg_dump -F custom "peertube_prod" > "$BACKUP_PATH"
 
     set -g VERSIONS_DIR "$INSTALL_DIR/versions"
@@ -48,7 +48,7 @@ function update_peertube
     echo_highlight "$LATEST_DIR" \n
 
     echo_progress "Giving back all permissions to: $PEERTUBE_USER" \n
-    chmod -R "$PEERTUBE_USER:" "$INSTALL_DIR"
+    chown -R "$PEERTUBE_USER:" "$INSTALL_DIR"
 
     echo_progress "Updating node dependencies..." \n
     sudo -i -u $PEERTUBE_USER yarn --cwd "$LATEST_DIR" install --production --pure-lockfile
