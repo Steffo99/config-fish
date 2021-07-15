@@ -7,11 +7,6 @@ function dotfish
         echo_progress "Updating fish config for: "
         echo_highlight "$TARGET" \n
 
-        if test -z $TARGET
-            echo_progress "Couldn't detect target, exiting..." \n
-            return 1
-        end
-
         set -g FISHCONFIG ~(echo $TARGET)/.config/fish
 
         echo_progress "Destination directory is: "
@@ -23,8 +18,8 @@ function dotfish
                 echo_progress "Deleting old config..." \n 
                 rm -rf "$FISHCONFIG"
             else
-                echo_progress "Deletion was refused, exiting..." \n
-                return 2
+                echo_progress "Deletion was refused, skipping..." \n
+                continue
             end
         end
             
