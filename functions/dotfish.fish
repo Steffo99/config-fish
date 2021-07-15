@@ -4,10 +4,19 @@ function dotfish
     else
         set -g TARGET (whoami)
     end
-    set -g FISHCONFIG ~(echo $TARGET)/.config/fish
     
     echo_progress "Updating fish config for: "
     echo_highlight "$TARGET" \n
+
+    if test -z $TARGET
+        echo_progress "Invalid target, exiting with 1"
+        exit 1
+    end
+
+    set -g FISHCONFIG ~(echo $TARGET)/.config/fish
+
+    echo_progress "Destination directory is: "
+    echo_highlight "$FISHCONFIG" \n
 
     if test -d $FISHCONFIG
         echo_progress "Pulling from Git..." \n
