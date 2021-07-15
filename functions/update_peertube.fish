@@ -23,20 +23,18 @@ function update_peertube
     set -g BACKUP_PATH "$BACKUP_DIR/sql-peertube_prod-"(date -Im)".bak"
     echo_progress "Backup path will be: "
     echo_highlight "$BACKUP_PATH" \n
-    
-    if not test -d "$BACKUP_DIR"
-        echo_progress "Creating backup dir..." \n
-        mkdir -p backup
-    end
-
-    echo_progress "Dumping the database to the backup dir..."
-    pg_dump -F custom "peertube_prod" > "$BACKUP_PATH"
 
     set -g LATEST (curl -s https://api.github.com/repos/chocobozzz/peertube/releases/latest | grep tag_name | cut -d '"' -f 4) 
     echo_progress "Updating to Peertube "
     echo_highlight "$LATEST" \n
 
     confirm
+
+    echo_progress "Creating backup dir..." \n
+    mkdir -p "$BACKUP_DIR"
+
+    echo_progress "Dumping the database to the backup dir..."
+    pg_dump -F custom "peertube_prod" > "$BACKUP_PATH"
 
     set -g VERSIONS_DIR "$INSTALL_DIR/versions"
     echo_progress "Versions dir is: "
