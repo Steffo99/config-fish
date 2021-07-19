@@ -36,7 +36,10 @@ function fish_prompt
 
 
     # Hostname
-    if test (who am i | awk '{print $5}') = "(:0)"
+    set -g CURRENT_IP (who am i | awk '{print $5}')
+    if test -z "$CURRENT_IP"
+        set_color magenta
+    else if test "$CURRENT_IP" "=" "(:0)"
         set_color green
     else 
         set_color cyan
