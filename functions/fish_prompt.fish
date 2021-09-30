@@ -43,12 +43,12 @@ function fish_prompt
         set -g CURRENT_IP (who | grep "$USER" | awk '{print $5}')
     end
 
-    if test "$CURRENT_IP" "=" "(:0)"
-        set_color green
-    else if test -n "$SSH_CLIENT"
-        set_color cyan
-    else
+    if test -z "$CURRENT_IP"
         set_color magenta
+    else if test "$CURRENT_IP" "=" "(:0)"
+        set_color green
+    else
+        set_color cyan
     end
 
     echo -n (prompt_hostname)
