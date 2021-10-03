@@ -39,8 +39,11 @@ function fish_prompt
     set -g CURRENT_IP (who am i | awk '{print $5}')
     
     if test -z "$CURRENT_IP"
-        # Experiment
-        set -g CURRENT_IP (who | grep "$USER" | awk '{print $5}')
+        set -g "CURRENT_IP" (who | grep "$USER" | awk '{print $5}')
+    end
+
+    if test -z "$CURRENT_IP"
+        set -g "CURRENT_IP" (who | grep "$SUDO_USER" | awk '{print $5}')
     end
 
     if test -z "$CURRENT_IP"
