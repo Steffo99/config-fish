@@ -7,7 +7,5 @@ function discord_export
     set channels "--channel "$argv
     set channels (string split -- " " "$channels")
 
-    echo_progress $channels
-
     discord-chat-exporter-cli export --bot $channels
 end
