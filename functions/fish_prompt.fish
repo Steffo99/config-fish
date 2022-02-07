@@ -50,7 +50,7 @@ function fish_prompt
         set_color green
     else if test "$CURRENT_IP" "=" "(:0)"
         set_color brgreen
-    else if string match --regex '\(.+\)' "$CURRENT_IP"
+    else if string match --regex --quiet '\(.+\)' "$CURRENT_IP" > /dev/null
         set_color cyan
     else
         set_color green
