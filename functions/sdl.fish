@@ -1,3 +1,3 @@
-function sdl --wraps='journalctl -u' --description 'alias sdl journalctl -u'
-  journalctl -u $argv; 
+function sdj --wraps='journalctl -u' --description 'alias sdj journalctl -u'
+  journalctl -u $argv;
 end

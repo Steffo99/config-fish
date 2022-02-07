@@ -36,8 +36,8 @@ function fish_prompt
 
 
     # Hostname
-    set -g CURRENT_IP (who am i | awk '{print $5}')
-    
+    set -g "CURRENT_IP" (who -m | awk '{print $5}')
+
     if test -z "$CURRENT_IP"
         set -g "CURRENT_IP" (who | grep "$USER" | awk '{print $5}')
     end
@@ -47,11 +47,13 @@ function fish_prompt
     end
 
     if test -z "$CURRENT_IP"
-        set_color magenta
-    else if test "$CURRENT_IP" "=" "(:0)"
         set_color green
-    else
+    else if test "$CURRENT_IP" "=" "(:0)"
+        set_color brgreen
+    else if string match --regex '\(.+\)' "$CURRENT_IP"
         set_color cyan
+    else
+        set_color green
     end
 
     echo -n (prompt_hostname)
@@ -63,8 +65,10 @@ function fish_prompt
 
 
     # Current working directory
-    if not test -x .
+    if not test -e "$PWD"
         set_color brblack
+    else if not test -x .
+        set_color white
     else if not test -r .
         set_color white
     else if not test -w .
