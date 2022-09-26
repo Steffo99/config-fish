@@ -9,15 +9,12 @@ function fish_prompt
     case "/root"
         # Root
         set_color brred
-    case "/srv/*"
-        # System account
-        set_color brpurple
     case "/home/*"
         # Regular user
         set_color brgreen
     case "*"
         # Temporary account
-        set_color brcyan
+        set_color brpurple
     end
     echo -n "$USER"
 
@@ -36,10 +33,12 @@ function fish_prompt
 
 
     # Hostname
-    if test -z "$SSH_CLIENT"
-        set_color green
-    else
+    if test -n "$SSH_CLIENT"
         set_color cyan
+    else if test -n "$SUDO_COMMAND"
+        set_color purple
+    else
+        set_color green
     end
 
     echo -n (prompt_hostname)
