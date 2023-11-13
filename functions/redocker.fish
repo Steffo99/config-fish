@@ -1,5 +1,5 @@
 function redocker
-	set project (docker compose config --format json | jq .name)
+	set project (docker compose config --format json | jq --raw-output .name)
 
 	echo_progress "Pulling images used by "
 	echo_highlight "$project"
