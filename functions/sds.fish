@@ -1,3 +1,3 @@
-function sds --wraps='systemctl status' --description 'alias sds systemctl status'
+function sds
   systemctl status $argv; 
 end

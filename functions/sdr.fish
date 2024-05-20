@@ -1,3 +1,3 @@
-function sdr --wraps='systemctl restart' --description 'alias sdr systemctl restart'
+function sdr
   systemctl restart $argv; 
 end

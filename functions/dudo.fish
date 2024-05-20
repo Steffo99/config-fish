@@ -1,3 +1,3 @@
-function dudo --wraps=sudo --description 'alias dudo sudo'
+function dudo --wraps=sudo
   sudo $argv; 
 end

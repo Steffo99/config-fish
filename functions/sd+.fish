@@ -1,3 +1,3 @@
-function sd+ --wraps='systemctl start' --wraps='systemctl enable --now' --description 'alias sd+ systemctl enable --now'
+function sd+
   systemctl enable --now $argv; 
 end
