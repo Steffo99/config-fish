@@ -1,4 +1,3 @@
-# Defined in - @ line 1
-function ll --wraps='ls -al' --description 'alias ll=ls -al'
-    ls -al $argv;
+function ll
+    ls --all --author --color --kibibytes --human-readable -l $argv;
 end
