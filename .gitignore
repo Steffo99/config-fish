@@ -1,3 +1,4 @@
 /fish_variables
-/conf.d
-/functions/alias.fish
+/conf.d/*
+!/conf.d/pipx.fish
+!/conf.d/rubygems.fish
