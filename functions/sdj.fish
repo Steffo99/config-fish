@@ -1,3 +1,3 @@
-function sdj --wraps='journalctl -u' --description 'alias sdj journalctl -u'
-  journalctl -u $argv;
+function sdj
+  journalctl --follow --unit=$argv[1]
 end
