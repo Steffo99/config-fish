@@ -1,4 +1,4 @@
-function telegram-sticker
+function telegram-sticker --wraps="magick"
     echo_progress "Processing "
     echo_highlight "$argv[1]"
     echo_progress "..."

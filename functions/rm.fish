@@ -1,3 +1,3 @@
-function rm --description 'alias rm rm -i'
+function rm --wraps="rm"
  command rm -i $argv; 
 end

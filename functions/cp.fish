@@ -1,3 +1,3 @@
-function cp --description 'alias cp cp -i'
+function cp --wraps="cp"
  command cp -i $argv; 
 end

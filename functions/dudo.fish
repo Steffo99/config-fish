@@ -1,3 +1,3 @@
-function dudo --wraps=sudo
+function dudo --wraps="sudo"
   sudo $argv; 
 end
