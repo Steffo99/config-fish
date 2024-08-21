@@ -1,33 +1,21 @@
-function redocker
-	set project (docker compose config --format json | jq --raw-output .name)
+which docker --skip-functions >/dev/null 2>/dev/null
+	if [ $status -eq 0 ]
+	function redocker
+		set project (docker compose config --format json | jq --raw-output .name)
 
-	echo_progress "Pulling images used by "
-	echo_highlight "$project"
-	echo_progress "..."
-	echo
-	docker compose pull
+		log-d "Pulling images used by " "$project" "..."
+		command docker compose pull
 
-	echo_progress "Building images using by "
-	echo_highlight "$project"
-	echo_progress "..."
-	echo
-	docker compose build
+		log-d "Building images using by " "$project" "..."
+		command docker compose build
 
-	echo_progress "Taking down "
-	echo_highlight "$project"
-	echo_progress "..."
-	echo
-	docker compose down
+		echo_progress "Taking down " "$project" "..."
+		command docker compose down
 
-	echo_progress "Bringing up "
-	echo_highlight "$project"
-	echo_progress "..."
-	echo
-	docker compose up -d
-	
-	echo_progress "Opening logs of "
-	echo_highlight "$project"
-	echo_progress "..."
-	echo
-	docker compose logs -f
+		echo_progress "Bringing up " "$project" "..."
+		command docker compose up -d
+		
+		echo_progress "Opening logs of " "$project" "..."
+		command docker compose logs -f
+	end
 end

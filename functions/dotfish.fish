@@ -4,40 +4,35 @@ function dotfish
     end
 
     for TARGET in $argv
-        echo_progress "Updating fish config for: "
-        echo_highlight "$TARGET" \n
-
+        log-d "Updating fish config for:" "$TARGET" ""
         set -g FISHCONFIG ~(echo $TARGET)/.config/fish
 
-        echo_progress "Destination directory is: "
-        echo_highlight "$FISHCONFIG" \n
-
+        log-d "Destination directory is:" "$FISHCONFIG" ""
         if not test -e "$FISHCONFIG/.DOTFISHED"
-            echo_progress "Conflicting config detected, confirm deletion?" \n
+            log-w "Conflicting config detected" "$FISHCONFIG" ", delete?"
             if confirm
-                echo_progress "Deleting old config..." \n 
-                rm -rf "$FISHCONFIG"
+                log-d "Deleting old config at" "$FISHCONFIG" "..."
+                command rm -rf "$FISHCONFIG"
             else
-                echo_progress "Deletion was refused, skipping..." \n
+                log-d "Deletion rejected, not touching" "$FISHCONFIG" "..."
                 continue
             end
-        end
-            
+        end            
 
         if test -d "$FISHCONFIG"
-            echo_progress "Existing config detected, pulling from Git..." \n
-            git -C "$FISHCONFIG" pull
+            log-d "Existing config detected at" "$FISHCONFIG" "pulling from Git..."
+            command git -C "$FISHCONFIG" pull
         else
-            echo_progress "No config detected, cloning from Git..." \n
-            git clone "https://github.com/Steffo99/.config-fish" "$FISHCONFIG"
+            log-d "No config detected, cloning from Git into" "$FISHCONFIG" "..."
+            command git clone "https://github.com/Steffo99/.config-fish" "$FISHCONFIG"
         end
 
-        echo_progress "Fixing permissions..." \n
-        chown -R "$TARGET:" "$FISHCONFIG"
+        log-d "Fixing permissions at" "$FISHCONFIG" "..."
+        command chown -R "$TARGET:" "$FISHCONFIG"
 
-        echo_progress "Changing login shell..." \n
-        chsh -s "/usr/bin/fish" "$TARGET"
+        log-d "Changing login shell to" "/usr/bin/fish" "..."
+        command chsh -s "/usr/bin/fish" "$TARGET"
 
-        echo_progress "Update complete!" \n
+        log-s "" "Dotfish" "updated successfully!"
     end
 end
