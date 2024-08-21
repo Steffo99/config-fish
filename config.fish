@@ -17,5 +17,5 @@ set -U "fish_color_escape"          "green"
 set -U "fish_color_autosuggestion"  "brblack"
 set -U "fish_color_cancel"          "white" "--background=brred"
 
-set -U "DOTFISH_LOG_LEVEL" "100"
+set -U "DOTFISH_LOG_LEVEL" "50"
 
