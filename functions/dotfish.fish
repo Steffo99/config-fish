@@ -21,18 +21,18 @@ function dotfish
 				log-t "Deletion rejected, not touching" "$FISHCONFIG" "."
 				continue
 			end
-		end            
-
-		if test -d "$FISHCONFIG"
-			log-t "Existing config detected at" "$FISHCONFIG" "pulling from Git..."
-			command git -C "$FISHCONFIG" pull
-		else
-			log-t "No config detected, cloning from Git into" "$FISHCONFIG" "..."
-			command git clone "https://github.com/Steffo99/.config-fish" "$FISHCONFIG"
 		end
 
 		log-t "Fixing permissions at" "$FISHCONFIG" "..."
 		command chown -R "$TARGET:" "$FISHCONFIG"
+
+		if test -d "$FISHCONFIG"
+			log-t "Existing config detected at" "$FISHCONFIG" "pulling from Git..."
+			command sudo -u "$TARGET" -- git -C "$FISHCONFIG" pull
+		else
+			log-t "No config detected, cloning from Git into" "$FISHCONFIG" "..."
+			command sudo -u "$TARGET" -- git clone "https://github.com/Steffo99/.config-fish" "$FISHCONFIG"
+		end
 
 		log-t "Changing login shell to" "/usr/bin/fish" "..."
 		command chsh -s "/usr/bin/fish" "$TARGET"
