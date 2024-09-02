@@ -5,11 +5,11 @@ function log-w
 
 	set_color yellow
 	echo -n -- "$argv[1] "
-	set_color normal
+	set_color reset
 
 	set_color --bold bryellow
 	echo -n -- "$argv[2]"
-	set_color normal
+	set_color reset
 
 	set_color yellow
 	echo -n -- " $argv[3]"

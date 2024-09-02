@@ -1,7 +1,7 @@
 function fish_prompt
     # Save variables before they are gone
-    set "STATUS" $status
-    set "UID" (id -u)
+    set "DOTFISH_STATUS" $status
+    set "DOTFISH_UID" (id -u)
 
 
     # User name
@@ -65,16 +65,16 @@ function fish_prompt
 
 
     # Exit status
-    if test $STATUS -ne 0
+    if test $DOTFISH_STATUS -ne 0
         set_color brred
-        echo -n "[$STATUS]"
+        echo -n "[$DOTFISH_STATUS]"
     end
     set_color normal
 
 
     # Dollar
     set_color --bold white
-    if test "$UID" -eq 0
+    if test "$DOTFISH_UID" -eq 0
         echo -n "# "
     else
         echo -n "\$ "

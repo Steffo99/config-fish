@@ -5,14 +5,14 @@ function log-e
 
 	set_color red
 	echo -n -- "$argv[1] "
-	set_color normal
+	set_color reset
 
 	set_color --bold brred
 	echo -n -- "$argv[2]"
-	set_color normal
+	set_color reset
 
 	set_color red
 	echo -n -- " $argv[3]"
 	echo
-	set_color normal
+	set_color reset
 end

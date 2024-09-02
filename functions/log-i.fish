@@ -5,11 +5,11 @@ function log-i
 
 	set_color cyan
 	echo -n -- "$argv[1] "
-	set_color normal
+	set_color reset
 
 	set_color --bold brcyan
 	echo -n -- "$argv[2]"
-	set_color normal
+	set_color reset
 
 	set_color cyan
 	echo -n -- " $argv[3]"

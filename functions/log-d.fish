@@ -5,11 +5,11 @@ function log-d
 
 	set_color blue
 	echo -n -- "$argv[1] "
-	set_color normal
+	set_color reset
 
 	set_color --bold brblue
 	echo -n -- "$argv[2]"
-	set_color normal
+	set_color reset
 
 	set_color blue
 	echo -n -- " $argv[3]"

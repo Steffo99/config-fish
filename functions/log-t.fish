@@ -5,11 +5,11 @@ function log-t
 
 	set_color purple
 	echo -n -- "$argv[1] "
-	set_color normal
+	set_color reset
 
 	set_color --bold brpurple
 	echo -n -- "$argv[2]"
-	set_color normal
+	set_color reset
 
 	set_color purple
 	echo -n -- " $argv[3]"
