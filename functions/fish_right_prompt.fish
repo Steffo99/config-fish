@@ -1,4 +1,18 @@
 function fish_right_prompt
+    if [ -n "$VIRTUAL_ENV_PROMPT" ]
+        set_color white
+        echo -n -- "{venv:"
+        set_color reset
+
+        set_color brcyan
+        echo -n -- " $VIRTUAL_ENV_PROMPT"
+        set_color reset
+
+        set_color white
+        echo -n -- "}"
+        set_color reset
+    end
+
     if [ -f "compose.yml" ]
         set --local docker_pod_name (docker compose config --format="json" | jq --raw-output '.name')
         set --local docker_pod_states_output (docker compose ps --format="json" --all | jq --slurp --raw-output '.[].State')
@@ -10,7 +24,7 @@ function fish_right_prompt
         set --local docker_pod_dead_count (echo "$docker_pod_states_output" | grep --only-matching 'dead' - | wc --lines)
 
         set_color white
-        echo -n -- "{"
+        echo -n -- "{compose:"
         set_color reset
 
         if [ "$docker_pod_dead_count" -gt 0 ]
