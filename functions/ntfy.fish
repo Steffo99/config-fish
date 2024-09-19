@@ -1,4 +1,4 @@
-which ntfy --skip-functions >/dev/null 2>/dev/null
+which curl --skip-functions >/dev/null 2>/dev/null
 if [ $status -eq 0 ]
 	function ntfy
 		set topic $argv[1]
