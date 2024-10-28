@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <svg height="100%" id="emblematic-background" version="1.1" viewBox="0 0 512 512" width="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+   <linearGradient gradientUnits="userSpaceOnUse" id="background" x2="512" y1="512">
+    <stop offset="0" stop-color="#051436"/>
+    <stop offset=".75" stop-color="#001553"/>
+    <stop offset="1" stop-color="#010a4e"/>
+   </linearGradient>
+  </defs>
+  <rect fill="url(#background)" height="512" width="512"/>
+ </svg>
+ <svg height="63%" id="emblematic-icon" preserveAspectRatio="xMidYMid meet" viewBox="0 0 576 512" width="63%" x="94.72" xmlns="http://www.w3.org/2000/svg" y="94.72">
+  <defs>
+   <filter color-interpolation-filters="sRGB" id="emblematic-filter">
+    <feFlood flood-color="rgb(1,8,40)" in="SourceGraphic" result="flood"/>
+    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"/>
+    <feOffset dx="-4" dy="8" in="blur" result="offset"/>
+    <feComposite in="flood" in2="offset" operator="in" result="comp1"/>
+    <feComposite in="SourceGraphic" in2="comp1" result="comp2"/>
+   </filter>
+  </defs>
+  <!--! Font Awesome Pro 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc. -->
+  <path d="M275.2 38.4c-10.6-8-25-8.5-36.3-1.5S222 57.3 224.6 70.3l9.7 48.6c-19.4 9-36.9 19.9-52.4 31.5c-15.3 11.5-29 23.9-40.7 36.3L48.1 132.4c-12.5-7.3-28.4-5.3-38.6 4.9S-3 163.3 4.2 175.9L50 256 4.2 336.1c-7.2 12.6-5 28.4 5.3 38.6s26.1 12.2 38.6 4.9l93.1-54.3c11.8 12.3 25.4 24.8 40.7 36.3c15.5 11.6 33 22.5 52.4 31.5l-9.7 48.6c-2.6 13 3.1 26.3 14.3 33.3s25.6 6.5 36.3-1.5l77.6-58.2c54.9-4 101.5-27 137.2-53.8c39.2-29.4 67.2-64.7 81.6-89.5c5.8-9.9 5.8-22.2 0-32.1c-14.4-24.8-42.5-60.1-81.6-89.5c-35.8-26.8-82.3-49.8-137.2-53.8L275.2 38.4zM384 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" fill="#85c4ff" filter="url(#emblematic-filter)"/>
+ </svg>
+</svg>
