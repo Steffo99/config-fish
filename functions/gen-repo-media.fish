@@ -58,5 +58,5 @@ function gen-repo-media
 	log-t "Copying" "round emblem 128x128" "..."
 	command cp "$emblem_128x128_round" ".media/icon-128x128_round.png"
 
-	log-s "Successfully set up" "repository media" "!"
+	log-s "Successfully set up" ".media" "directory!"
 end
