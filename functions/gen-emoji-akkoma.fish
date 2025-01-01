@@ -4,7 +4,7 @@ if [ $status -eq 0 ]
         log-t "Creating" "Akkoma" "directory..."
         command mkdir --parents "Akkoma"
         log-d "Processing" "$argv[1]" "for Akkoma use..."
-        command magick -background none "$argv[1]"'[106x106]' -gravity 'center' -extent '106x106' $argv[2..-1] "Akkoma/$argv[1]"
+        command magick -background none "$argv[1]"'[106x106]' -gravity 'center' -extent '106x106' $argv[2..-1] "Akkoma/$argv[1].png"
         log-t "Done! Emoji added to the" "Akkoma" "directory!"
     end
 end
