@@ -16,6 +16,3 @@ set -U "fish_color_operator"        "cyan"
 set -U "fish_color_escape"          "green"
 set -U "fish_color_autosuggestion"  "brblack"
 set -U "fish_color_cancel"          "white" "--background=brred"
-
-# Logging level
-set -U "DOTFISH_LOG_LEVEL" "50"
