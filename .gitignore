@@ -1,4 +1,3 @@
 /fish_variables
-/conf.d/*
-!/conf.d/pipx.fish
-!/conf.d/rubygems.fish
+/functions/sysupdate.fish
+/conf.d
