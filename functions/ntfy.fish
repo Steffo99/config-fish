@@ -50,7 +50,7 @@ if [ $status -eq 0 ]
 		if [ -n "$_flag_markdown" ]
 			set header_markdown "X-Markdown: 1"
 			log-t "Created header:" "$header_markdown"
-		end		
+		end
 
 		log-i "Sending $_flag_priority notification to" "$_flag_topic" " with tags [$_flag_tag]..."
 
