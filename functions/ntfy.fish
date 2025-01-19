@@ -23,8 +23,13 @@ if [ $status -eq 0 ]
 		log-t "Message is:" "$argv"
 
 		if [ -z "$_flag_topic" ]
-			log-f "Missing" "topic" "."
-			return 2
+			if [ -z "$hostname" ]
+				log-d "Missing" "topic and hostname" ", defaulting to 'general'."
+				set _flag_topic "general"
+			else
+				log-d "Missing" "topic" ", defaulting to 'host_$hostname'."
+				set _flag_topic "host_$hostname"
+			end
 		end
 
 		if [ -z "$_flag_priority" ]
