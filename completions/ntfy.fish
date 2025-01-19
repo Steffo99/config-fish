@@ -31,3 +31,9 @@ complete \
 	--short-option="x" \
 	--long-option="tag" \
 	--description="Add tag"
+
+complete \
+	--command='ntfy' \
+	--short-option="m" \
+	--long-option="markdown" \
+	--description="Use Markdown"

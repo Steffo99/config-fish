@@ -6,6 +6,7 @@ if [ $status -eq 0 ]
 			(fish_opt --short="t" --long="title" --optional-val) \
 			(fish_opt --short="p" --long="priority" --optional-val) \
 			(fish_opt --short="x" --long="tag" --multiple-vals) \
+			(fish_opt --short="m" --long="markdown") \
 			-- $argv
 
 		if [ $status -ne 0 ]
@@ -18,6 +19,7 @@ if [ $status -eq 0 ]
 		log-t "Title is:" "$_flag_title"
 		log-t "Priority is:" "$_flag_priority"
 		log-t "Tags are:" "$_flag_tag"
+		log-t "Markdown is:" "$_flag_markdown"
 		log-t "Message is:" "$argv"
 
 		if [ -z "$_flag_topic" ]
@@ -44,7 +46,11 @@ if [ $status -eq 0 ]
 			set header_tags "X-Tags: $_flag_tag"
 			log-t "Created header:" "$header_tags"
 		end
-		
+
+		if [ -n "$_flag_markdown" ]
+			set header_markdown "X-Markdown: 1"
+			log-t "Created header:" "$header_markdown"
+		end		
 
 		log-i "Sending $_flag_priority notification to" "$_flag_topic" " with tags [$_flag_tag]..."
 
@@ -54,6 +60,7 @@ if [ $status -eq 0 ]
 				--header "$header_title" \
 				--header "$header_priority" \
 				--header "$header_tags" \
+				--header "$header_markdown" \
 				--data "$argv" \
 				--silent
 			)
